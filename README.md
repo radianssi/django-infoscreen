@@ -48,7 +48,7 @@ Clone the repo.
 git clone https://github.com/radianssi/django-infoscreen.git
 ```
 
-Django webapp is using Azure Blob Storage to store images that are used in Infoscreen content. Even running locally you have to create at least Azure Blob Storage. Other way is to simulate Blob Storage locally. From Blob Storage you need to store a few values for later use (for .env file):
+Django web app is using Azure Blob Storage to store images that are used in Infoscreen content. Even running locally you have to create at least Azure Blob Storage. Other way is to simulate Blob Storage locally. From Blob Storage you need to store a few values for later use (for .env file):
 ```
 AZURE_STORAGE_ACCOUNT_URL = https://<your-storage-account-here>.blob.core.windows.net/
 AZURE_BLOB_CREDENTIAL = <access-key>
@@ -58,7 +58,7 @@ As statet in prerequisites, you also need to have keys for [Open Weather API](ht
 
 
 ### Locally - Creating .env files
-To test locally you need at least two .env files for configuration. One for database (PostreSQL) and one for Django webapp. Database is fairly simple, create file named ".env.dev.local.db", insert two values and save the file to the root of this repo:
+To test locally you need at least two .env files for configuration. One for database (PostreSQL) and one for Django web app. Database is fairly simple, create file named ".env.dev.local.db", insert two values and save the file to the root of this repo:
 ```
 POSTGRES_USER=<mydbusername>
 POSTGRES_PASSWORD=<mydbpassword>
@@ -87,7 +87,7 @@ INFOSCREEN_APP_CLIENT_ID=<yourappclientid>
 INFOSCREEN_APP_TENANT_ID=<yourapptenantid>
 ```
 
-If you want to use Azure AD to create account in Django webapp and use it as admin, you need to register app in [Azure AD](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps). Then create client secret and copy "Value". Fulfill these as above stated:
+If you want to use Azure AD to create account in Django web app and use it as admin, you need to register app in [Azure AD](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps). Then create client secret and copy "Value". Fulfill these as above stated:
 ```
 INFOSCREEN_APP_DJANGO_CLIENT_SECRET = "Value" from created client secret
 INFOSCREEN_APP_CLIENT_ID = Application (client) ID
@@ -97,8 +97,8 @@ INFOSCREEN_APP_TENANT_ID = Directory (tenant) ID
 For testing purpose running locally you need to create "Redirect URI" for your app in Azure AD. Go to "Authtentication" and "Add a platform", choose Web and use value http://localhost/microsoft/auth-callback/.
 
 
-### Locally - Running the webapp & database
-After setting up everything previously, you can fire up Infoscreen webapp from root folder. Docker compose up command will build the webapp and create also PostreSQL database.
+### Locally - Running the web app & database
+After setting up everything previously, you can fire up Infoscreen web app from root folder. Docker compose up command will build the web app and create also PostreSQL database.
 ```
 docker compose up -d --build
 ```
@@ -146,7 +146,7 @@ After this, go to \terraform\environments\dev\ folder and create "terraform.tfva
 project_name                         = "infoscreen"
 environment                          = "dev"
 location                             = "<yourpreferredazurelocation>"
-lvm_custom_data_path_to_file         = "../../scripts/webapp-django.sh"
+lvm_custom_data_path_to_file         = "../../scripts/web app-django.sh"
 lvm_size                             = "Standard_B1s"
 nsg_ssh_security_rule_source_address = ["<your-own-ip-address>"]
 nsg_80_security_rule_source_address  = ["<your-own-ip-address>"]
@@ -160,7 +160,7 @@ terraform plan
 terraform apply -auto-approve
 ```
 
-Now you should have required infrastructure in Azure! Check the outputs and collect them for later use. While we are at it, also take a couple of sensitive values for running the webapp:
+Now you should have required infrastructure in Azure! Check the outputs and collect them for later use. While we are at it, also take a couple of sensitive values for running the web app:
 ```
 terraform output blob_storage_credential
 terraform output app_id
@@ -169,7 +169,7 @@ terraform output tenant_id
 ```
 
 
-### Deploying to the cloud (Azure) - Push Django webapp Docker container to Container Registry
+### Deploying to the cloud (Azure) - Push Django web app Docker container to Container Registry
 The next step is to push Docker image to the Azure Container Registry. Before building and pushing image, you have to update src\nginx_default.conf file. Update and save your Azure VM IP to line 9 as "server_name" value. After that start Docker and execute these commands in the root of repo:
 ```
 az acr login --name <nameofyourcontainerregistry>
@@ -223,6 +223,6 @@ Site.objects.create(domain='<ip-address-of-this-azure-vm>', name='<ip-address-of
 exit()
 ```
 
-After this you should have database and Django webapp running in containers. You can verify it using command "sudo docker ps".
+After this you should have database and Django web app running in containers. You can verify it using command "sudo docker ps".
 
 Now you can try to log in with recently created superuser credentials http://ip-address-of-this-azure-vm/admin/. Try to add release in "Helsinki" and see if it can be seen at http://ip-address-of-this-azure-vm/infoscreen/Helsinki/. All set!
