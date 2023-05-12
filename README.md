@@ -170,7 +170,7 @@ terraform output tenant_id
 
 
 ### Deploying to the cloud (Azure) - Push Django web app Docker container to Container Registry
-The next step is to push Docker image to the Azure Container Registry. Before building and pushing image, you have to update src\nginx_default.conf file. Update and save your Azure VM IP to line 9 as "server_name" value. After that start Docker and execute these commands in the root of repo:
+The next step is to push Docker image to the Azure Container Registry. Before building and pushing image, you have to update src\nginx_default.conf file. Update line 9 as "server_name" default value "127.0.0.1" to your Azure VM IP and save the file. After that start Docker and execute these commands in the root of repo:
 ```
 az acr login --name <nameofyourcontainerregistry>
 docker build -t <nameofyourcontainerregistry>.azurecr.io/infoscreen:latest .
