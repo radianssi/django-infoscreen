@@ -10,7 +10,7 @@ Infoscreen isn't finalized and not production ready. It is mostly minimum viable
 - Admin page (Django native, some modificatons) where you can control users and content
 - Choose in which offices to display content (text and images)
 - Choose timeframe when content is displayed
-- Option to use Azure AD login for easier authentication using (AngellusMortis/django_microsoft_auth)[https://github.com/AngellusMortis/django_microsoft_auth]
+- Option to use Azure AD login for easier authentication using [AngellusMortis/django_microsoft_auth](https://github.com/AngellusMortis/django_microsoft_auth)
 
 ## TO-DO
 - Modify production infrastructure: run Infoscreen in Azure managed services rather than in VM
