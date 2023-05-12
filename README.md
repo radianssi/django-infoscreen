@@ -22,8 +22,8 @@ Infoscreen isn't finalized and not production ready. It is mostly minimum viable
 ## Prerequisites
 The things you need before running Infoscreen. These accounts / APIs are needed:
 - Azure account & subscription (owner privileges or at least contributor + role assigment privileges)
-- (Open Weather API key)[https://openweathermap.org/api] (free)
-- (YLE API key)[https://developer.yle.fi/en/index.html] (free)
+- [Open Weather API key](https://openweathermap.org/api) (free)
+- [YLE API key](https://developer.yle.fi/en/index.html) (free)
 
 ### Locally
 - Docker
