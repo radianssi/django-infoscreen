@@ -3,7 +3,7 @@ This Infoscreen is developed (Django, Terraform, Actions) by Anssi Yli-Leppälä
 # Infoscreen project
 Scope of this project is to create solution for displaying information on a digital screen or monitor also known as digital signage or infoscreen. Screens would be in different offices for example in Helsinki, Kuopio, Oulu and Tampere. Each screen will have it's own content and it is updated in Django based web site running in Azure. With the use of HTML, CSS, and JavaScript, dynamic content, including text and images, will be running on the screens.
 
-Infoscreen isn't finalized and not production ready. It is mostly minimum viable product to be developed further. This project also had working CICD pipeline in GitHub Actions. Commit history isn't available because it was private project before this.
+Infoscreen isn't finalized and not production ready. It is mostly minimum viable product to be developed further. This project also had working CICD pipeline in GitHub Actions. [Atlantis](https://www.runatlantis.io/) for running commands in GitHub PR was tested at PoC level. Commit history isn't available because it was private project before this.
 
 
 ## Features
