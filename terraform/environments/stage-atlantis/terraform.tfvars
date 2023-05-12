@@ -1,5 +1,4 @@
 # Normally this is in .gitignore but for testing reasons this is added to repo
-resource_group_name                  = "yourresourcegroup"
 project_name                         = "infoscreen"
 environment                          = "stage"
 location                             = "yourazurelocation"
